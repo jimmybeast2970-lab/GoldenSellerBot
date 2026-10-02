@@ -610,5 +610,3 @@ async def edit_value(m: Message, state: FSMContext):
     await m.answer("✅ Profile updated.", reply_markup=seller_menu())
 
 
-@dp.callback_query(F.data == "delete_profile")
-async def delete_profile(c
