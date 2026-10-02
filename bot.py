@@ -21,7 +21,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
-ADMIN_ID = int(os.getenv("ADMIN_ID", "1897213917").strip() or "0")
+ADMIN_ID = int(os.getenv("ADMIN_ID", "0").strip() or "0")
 PAYMENT_UPI = os.getenv("PAYMENT_UPI", "YOUR-UPI@upi").strip()
 ORDER_CONFIRM_FEE = int(os.getenv("ORDER_CONFIRM_FEE", "51").strip() or "51")
 DB_PATH = os.getenv("DB_PATH", "golden_seller.db")
@@ -143,7 +143,6 @@ def seller_menu():
          InlineKeyboardButton(text="📈 Margin", callback_data="margin")],
         [InlineKeyboardButton(text="📖 Guide", callback_data="guide"),
          InlineKeyboardButton(text="🔎 AWB Search", callback_data="awb")],
-        [InlineKeyboardButton(text="🗑️ Delete Profile", callback_data="delete_profile")]
     ])
 
 
@@ -611,3 +610,11 @@ async def edit_value(m: Message, state: FSMContext):
 
 
 
+
+@dp.callback_query(F.data == "rank")
+async def rank(c: CallbackQuery):
+    await c.answer()
+    s = get_seller(c.from_user.id)
+    if not s:
+        return
+    count = db
