@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
-ADMIN_ID = int(os.getenv("ADMIN_ID", "0"))
+ADMIN_ID = int(os.getenv("ADMIN_ID", "1897213917"))
 PAYMENT_STARS = int(os.getenv("PAYMENT_STARS", "100"))
 DB_PATH = os.getenv("DB_PATH", "golden_seller.db")
 
